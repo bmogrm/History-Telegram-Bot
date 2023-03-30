@@ -10,11 +10,11 @@ using System;
 
 var botClient = new TelegramBotClient("5982499102:AAEIa2j6jBoGVaGemS4WmH0unG-xDYbXv6s");
 
-var dates = System.IO.File.ReadAllText("C:\\Rodion\\testdate4.json");
+var dates = System.IO.File.ReadAllText("C:\\Rodion\\Projects\\History-Bot\\testdate4.json");
 var json = JsonConvert.DeserializeObject<string[]>(dates);
 
-var info = "Спасибо что запустил меня!" +
-           "Ты можешь использовать меня чтобы узнать все возможные даты по истории России." +
+var info = "Спасибо что запустил меня!\n" +
+           "Ты можешь использовать меня чтобы узнать все возможные даты по истории России.\n" +
            "На данный момент ты можешь нажать на кнопку 'Случайная дата' - чтобы получить рандомную дату, а так же" +
            "выбрать интересующий век и плучить список всех дат за этот век";
 
@@ -43,8 +43,8 @@ cts.Cancel();
 
 async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken token)
 {
-    var text = update.Message.Text;
-    var id = update.Message.Chat.Id;
+    var text = update.Message?.Text;
+    var id = update.Message?.Chat.Id;
 
     if (text != null)
     {
